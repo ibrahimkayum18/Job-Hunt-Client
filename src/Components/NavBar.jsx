@@ -1,6 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Log Out Successfull");
+        navigate("/");
+      })
+      .catch((err) => toast.error(err.message));
+  };
+
   const navLinks = (
     <>
       <li>
@@ -24,35 +39,39 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to="/applied-jobs"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active " : ""
-          }
-        >
-          Applied Jobs
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/add-job"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active " : ""
-          }
-        >
-          Add A Job
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/my-jobs"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active " : ""
-          }
-        >
-          My Jobs
-        </NavLink>
-      </li>
+          <NavLink
+            to="/applied-jobs"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active " : ""
+            }
+          >
+            Applied Jobs
+          </NavLink>
+        </li>
+      {user && (
+        <li>
+          <NavLink
+            to="/add-job"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active " : ""
+            }
+          >
+            Add A Job
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink
+            to="/my-jobs"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active " : ""
+            }
+          >
+            My Jobs
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink
           to="/blogs"
@@ -63,26 +82,30 @@ const NavBar = () => {
           Blogs
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/login"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active " : ""
-          }
-        >
-          Log In
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/register"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active " : ""
-          }
-        >
-          Register
-        </NavLink>
-      </li>
+      {!user && (
+        <li>
+          <NavLink
+            to="/login"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active " : ""
+            }
+          >
+            Log In
+          </NavLink>
+        </li>
+      )}
+      {!user && (
+        <li>
+          <NavLink
+            to="/register"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active " : ""
+            }
+          >
+            Register
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -124,25 +147,27 @@ const NavBar = () => {
             <ul className="menu menu-horizontal">{navLinks}</ul>
           </div>
           <li>
-            <div className="dropdown dropdown-end">
-              <img
-                className="w-12 h-12 rounded-full"
-                tabIndex={0}
-                src=""
-                alt=""
-              />
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a>Item 1</a>
-                </li>
-                <li>
-                  <a>Item 2</a>
-                </li>
-              </ul>
-            </div>
+            {user && (
+              <div className="dropdown dropdown-end mr-5">
+                <img
+                  className="w-12 h-12 rounded-full"
+                  tabIndex={0}
+                  src={user.photoURL}
+                  alt=""
+                />
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a>{user.displayName}</a>
+                  </li>
+                  <li>
+                    <a onClick={handleLogOut}>Log Out</a>
+                  </li>
+                </ul>
+              </div>
+            )}
           </li>
         </div>
       </div>
