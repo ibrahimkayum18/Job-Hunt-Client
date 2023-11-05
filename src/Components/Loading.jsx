@@ -9,7 +9,7 @@ const Loading = () => {
   };
 
   return (
-    <div onClick={{ handleClose }}>
+    <div onClick={ handleClose }>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}

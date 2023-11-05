@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const UseAllJobs = () => {
     const {data, isLoading, refetch} = useQuery({
-        queryKey:['totalJobs'],
+        queryKey:["totalJobs"],
         queryFn: async() => {
             const fetchedJobs = await fetch('http://localhost:5000/allJobs');
             const allJobs = await fetchedJobs.json();

@@ -7,7 +7,7 @@ const Home = () => {
     const [input, setInput] = useState('');
     const allJobs = UseAllJobs();
     return (
-        <div>
+        <div className="bg-sky-200">
             <Banner 
             setInput={setInput} 
             input={input}
