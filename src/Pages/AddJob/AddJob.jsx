@@ -23,12 +23,11 @@ const AddJob = () => {
     const salary = form.salary.value;
     const postingDate = form.postingDate.value;
     const jobApplicantsNumber = form.jobApplicantsNumber.value;
-    const userEmail = user.email;
+    const email = user.email;
     const applicationDeadline = startDate;
-    const job = {jobPhoto, jobTitle, userName, category, jobDescription, salary, postingDate, jobApplicantsNumber, userEmail, applicationDeadline}
-    console.log(job)
+    const job = {jobPhoto, jobTitle, userName, category, jobDescription, salary, postingDate, jobApplicantsNumber, email, applicationDeadline}
 
-    axios.post('http://localhost:5000/api/v1/allJobs', job)
+    axios.post('http://localhost:5000/allJobs', job)
     .then(res => {
         if(res.data.acknowledged){
             toast.success('Job Addeded Successfully')
@@ -141,7 +140,7 @@ const AddJob = () => {
               <option value="40">40k</option>
               <option value="50">50k</option>
               <option value="60">60k</option>
-              <option value="70">70</option>
+              <option value="70">70k</option>
             </select>
           </div>
         </div>

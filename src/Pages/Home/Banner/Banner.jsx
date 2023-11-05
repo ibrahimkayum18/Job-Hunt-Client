@@ -1,10 +1,8 @@
 import { TypeAnimation } from "react-type-animation";
 import { FaSearch } from 'react-icons/fa';
-import { useState } from "react";
 
 
-const Banner = () => {
-    const [input, setInput] = useState('');
+const Banner = ({input,setInput}) => {
 
   return (
     <div
