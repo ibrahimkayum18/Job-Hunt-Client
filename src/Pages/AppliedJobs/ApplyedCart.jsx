@@ -1,24 +1,19 @@
 import {AiFillDelete} from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 
-
-const MhAllJobs = ({ jobs, handleDelete }) => {
-    console.log(jobs);
+const ApplyedCart = ({jobs, handleDelete}) => {
     const {
         _id,
+        portfolio,
       jobPhoto,
-      userName,
+      name,
       category,
-      applicationDeadline,
+      email,
       salary,
-      postingDate,
       jobTitle,
     } = jobs || {};
-
-    
-
     return (
-      <tr>
+        <tr>
         <th>
           <label>
             <AiFillDelete onClick={() => handleDelete(_id)} className='text-3xl'></AiFillDelete>
@@ -32,7 +27,7 @@ const MhAllJobs = ({ jobs, handleDelete }) => {
               </div>
             </div>
             <div>
-              <div className="font-bold">{userName}</div>
+              <div className="font-bold">{name}</div>
               <div className="text-sm opacity-50">Bangladesh</div>
             </div>
           </div>
@@ -42,17 +37,16 @@ const MhAllJobs = ({ jobs, handleDelete }) => {
           <br />
           <span className="badge badge-ghost badge-sm">{category}</span>
         </td>
-        <td>{postingDate}</td>
-        <td>{applicationDeadline}</td>
+        <td>{email}</td>
+        <td>{portfolio}</td>
         <td>{salary}k</td>
         <th>
           <Link to={`/update/${_id}`}>
-          <button  className="btn btn-ghost btn-xs">Update</button>
+          <button  className="btn btn-ghost btn-xs">See More</button>
           </Link>
         </th>
       </tr>
     );
-  };
-  
-  export default MhAllJobs;
-  
+};
+
+export default ApplyedCart;
