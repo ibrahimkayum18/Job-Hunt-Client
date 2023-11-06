@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const AllJobsCart = ({ jobs }) => {
-  console.log(jobs);
   const {
+    _id,
     jobPhoto,
     userName,
     category,
@@ -38,7 +40,7 @@ const AllJobsCart = ({ jobs }) => {
       <td>{applicationDeadline}</td>
       <td>{salary}k</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <Link to={`/details/${_id}`}><button className="btn btn-ghost btn-xs">details</button></Link>
       </th>
     </tr>
   );

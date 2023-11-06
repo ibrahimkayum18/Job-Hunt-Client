@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import UseAllJobs from "../../Hooks/useAllJobs/UseAllJobs";
@@ -9,10 +9,12 @@ const Details = () => {
     const [singleJob, setSingleJob] = useState([]);
     const {data} = UseAllJobs();
     const {user} = useContext(AuthContext)
-    if(user){
-        const findJob = data.filter(job => job._id == id)
-        setSingleJob(findJob)
-    }
+    useEffect(() => {
+        if(data){
+            const findJob = data.filter(job => job._id == id)
+            setSingleJob(findJob)
+        }
+    } ,[data, id, user])
     console.log(singleJob)
     return (
         <div>
