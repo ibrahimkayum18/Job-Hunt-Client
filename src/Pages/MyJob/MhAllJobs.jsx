@@ -1,8 +1,10 @@
+import axios from 'axios';
 import {AiFillDelete} from 'react-icons/ai'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
-const MhAllJobs = ({ jobs }) => {
+const MhAllJobs = ({ jobs, handleDelete }) => {
     console.log(jobs);
     const {
         _id,
@@ -14,12 +16,14 @@ const MhAllJobs = ({ jobs }) => {
       postingDate,
       jobTitle,
     } = jobs || {};
-    console.log(_id)
+
+    
+
     return (
       <tr>
         <th>
           <label>
-            <AiFillDelete className='text-3xl'></AiFillDelete>
+            <AiFillDelete onClick={() => handleDelete(_id)} className='text-3xl'></AiFillDelete>
           </label>
         </th>
         <td>

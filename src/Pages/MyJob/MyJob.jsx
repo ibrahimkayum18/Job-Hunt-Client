@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MhAllJobs from "./MhAllJobs";
+import Swal from "sweetalert2";
 // import UseAllJobs from "../../Hooks/useAllJobs/UseAllJobs";
 
 const MyJob = () => {
@@ -15,6 +16,51 @@ const MyJob = () => {
         })
     } ,[user?.email])
 
+    const handleDelete = id => {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      });
+      swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          axios.delete(`http://localhost:5000/allJobs/${id}`)
+          .then(res => {
+            if(res.data.deletedCount > 0){
+              const remaining = allCreatedJobs.filter(item => item._id !== id);
+              console.log('deleted', remaining);
+              setAllCreatedJobs(remaining);
+            }
+          })
+
+          swalWithBootstrapButtons.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            icon: "error"
+          });
+        }
+      });
+    }
 
     return (
         <div>
@@ -40,6 +86,7 @@ const MyJob = () => {
             {allCreatedJobs.map((jobs) => (
               <MhAllJobs 
               key={jobs._id} 
+              handleDelete={handleDelete}
               jobs={jobs}
               ></MhAllJobs>
             ))}
