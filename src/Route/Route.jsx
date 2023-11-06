@@ -11,6 +11,7 @@ import Register from "../Pages/Register/Register";
 import PrivateRouter from "../Provider/PrivateRouter";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Details from "../Pages/Details/Details";
+import Update from "../Pages/Update/Update";
 
 
 const Route = createBrowserRouter([
@@ -60,7 +61,14 @@ const Route = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRouter><Details></Details></PrivateRouter>,
-            }
+                loader: ({params}) => fetch(`http://localhost:5173/allJobs/details/${params.id}`)
+            },
+            {
+                path: '/update/:id',
+                element: <PrivateRouter><Update></Update></PrivateRouter>,
+                loader: ({params}) => fetch(`http://localhost:5173/allJobs/details/${params.id}`)
+            },
+            
         ]
     }
 ])

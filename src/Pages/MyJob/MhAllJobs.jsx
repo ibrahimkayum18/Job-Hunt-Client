@@ -44,7 +44,7 @@ const MhAllJobs = ({ jobs }) => {
         <td>{applicationDeadline}</td>
         <td>{salary}k</td>
         <th>
-          <Link to={`/details/${_id}`}>
+          <Link to={`/update/${_id}`}>
           <button  className="btn btn-ghost btn-xs">Update</button>
           </Link>
         </th>

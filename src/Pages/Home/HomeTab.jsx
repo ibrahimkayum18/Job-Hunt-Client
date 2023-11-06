@@ -5,7 +5,7 @@ import HomeCart from "./HomeCart";
 import { useState } from "react";
 
 const HomeTab = () => {
-  const {data} = UseAllJobs();
+  const {data = []} = UseAllJobs();
   const [filteredData, setFilteredData] = useState(data)
   
   
@@ -18,7 +18,6 @@ const HomeTab = () => {
       setFilteredData(data)
     }
   }
-  console.log(filteredData);
     
   return (
     <div>

@@ -6,7 +6,8 @@ import { useState } from "react";
 
 const AllJobs = () => {
   const [input, setInput] = useState('');
-  const { data } = UseAllJobs();
+  const { data = [] } = UseAllJobs();
+  console.log(data)
 
   return (
     <div>
