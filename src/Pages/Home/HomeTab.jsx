@@ -4,8 +4,8 @@ import UseAllJobs from "../../Hooks/useAllJobs/UseAllJobs";
 import HomeCart from "./HomeCart";
 import { useState } from "react";
 
-const HomeTab = () => {
-  const {data = []} = UseAllJobs();
+const HomeTab = ({data}) => {
+  // const {data = []} = UseAllJobs();
   const [filteredData, setFilteredData] = useState(data)
   
   
@@ -30,55 +30,40 @@ const HomeTab = () => {
           <Tab onClick={() => filterItem('part-time')}>Part Time Jobss</Tab>
         </TabList>
 
-        <TabPanel style={{
-          display:'grid',
-          gridTemplateColumns: 'repeat(2,1fr)',
-          gap: '20px',
-          padding: '0 20px'
-        }}>
+        <TabPanel >
+          <div className="grid lg:grid-cols-2 gap-5 p-5">
           {
-            filteredData.map(job => <HomeCart key={job._id} job={job}></HomeCart>)
+            data.map(job => <HomeCart key={job._id} job={job}></HomeCart>)
           }
+          </div>
         </TabPanel>
-        <TabPanel style={{
-          display:'grid',
-          gridTemplateColumns: 'repeat(2,1fr)',
-          gap: '20px',
-          padding: '0 20px'
-        }}>
+        <TabPanel>
+          <div className="grid lg:grid-cols-2 gap-5 p-5">
           {
             filteredData.map(job => <HomeCart key={job._id} job={job}></HomeCart>)
           }
+          </div>
         </TabPanel>
-        <TabPanel style={{
-          display:'grid',
-          gridTemplateColumns: 'repeat(2,1fr)',
-          gap: '20px',
-          padding: '0 20px'
-        }}>
+        <TabPanel>
+          <div className="grid lg:grid-cols-2 gap-5 p-5">
           {
             filteredData.map(job => <HomeCart key={job._id} job={job}></HomeCart>)
           }
+          </div>
         </TabPanel>
-        <TabPanel style={{
-          display:'grid',
-          gridTemplateColumns: 'repeat(2,1fr)',
-          gap: '20px',
-          padding: '0 20px'
-        }}>
+        <TabPanel>
+          <div className="grid lg:grid-cols-2 gap-5 p-5">
           {
             filteredData.map(job => <HomeCart key={job._id} job={job}></HomeCart>)
           }
+          </div>
         </TabPanel>
-        <TabPanel style={{
-          display:'grid',
-          gridTemplateColumns: 'repeat(2,1fr)',
-          gap: '20px',
-          padding: '0 20px'
-        }}>
+        <TabPanel>
+          <div className="grid lg:grid-cols-2 gap-5 p-5">
           {
             filteredData.map(job => <HomeCart key={job._id} job={job}></HomeCart>)
           }
+          </div>
         </TabPanel>
         
       </Tabs>

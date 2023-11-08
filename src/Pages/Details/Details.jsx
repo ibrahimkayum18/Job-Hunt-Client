@@ -6,6 +6,7 @@ import {  FaUser, FaVoicemail } from "react-icons/fa";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {ImCross} from "react-icons/im"
+import emailjs from '@emailjs/browser';
 
 const Details = () => {
   const [job, setJob] = useState([]);
@@ -59,6 +60,24 @@ const Details = () => {
             toast.success(`You have applyed this job`)
         }
     })
+
+
+    emailjs.sendForm('service_tmsqied', 'template_7sv94ud', name, userName, 'tMERoPQH5j-SF1xsE')
+    .then((result) => {
+        console.log(result.text);
+        toast.success('Check Email')
+    }, (error) => {
+        console.log(error.text);
+    });
+  }
+  const handleUpdate = ({name}) =>{
+    emailjs.sendForm('service_tmsqied', 'template_7sv94ud', name, userName, 'tMERoPQH5j-SF1xsE')
+    .then((result) => {
+        console.log(result.text);
+        toast.success('Check Email')
+    }, (error) => {
+        console.log(error.text);
+    });
   }
 
   return (
@@ -148,7 +167,7 @@ const Details = () => {
                 />
               </div>
               <div className="text-center my-5">
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button onClick={handleUpdate} type="submit" className="btn btn-primary">Submit</button>
               </div>
           </form>
 

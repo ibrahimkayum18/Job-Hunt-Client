@@ -11,7 +11,7 @@ const AppliedJobs = () => {
     console.log(applyed);
     const {user} = useContext(AuthContext)
   useEffect(() => {
-    axios.get(`http://localhost:5000/applyed?email=${user?.email}`)
+    axios.get(`http://localhost:5000/applyed?email=${user?.email}`,{withCredentials:true})
     .then(res => setApplyed(res.data))
   } ,[user?.email])
   const handleDelete = id => {

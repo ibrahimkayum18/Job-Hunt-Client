@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [user, setUser] = useState([])
   const { login, googleLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,11 +17,23 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    setEmail(email)
 
     login(email, password)
-      .then(() => {
+      .then((res) => {
+        setUser(res.data)
         toast.success('Logged In Successfully')
-        navigate(location?.state ? location.state : '/')
+        
+        if(user){
+          const loggedUser = {email}
+          axios.post( 'http://localhost:5000/jwt',loggedUser, {withCredentials: true})
+          .then(res => {
+            if(res.data.success){
+              navigate(location?.state ? location.state : '/')
+            }
+          })
+        }
+        
       })
       .catch((err) => console.log(err));
   };
@@ -26,7 +41,15 @@ const Login = () => {
     googleLogin()
       .then(() => {
         toast.success('Logged In Successfully')
-        navigate(location?.state ? location.state : '/')
+        if(user){
+          const loggedUser = {email}
+          axios.post( 'http://localhost:5000/jwt',loggedUser, {withCredentials: true})
+          .then(res => {
+            if(res.data.success){
+              navigate(location?.state ? location.state : '/')
+            }
+          })
+        }
       })
       .catch((err) => console.error(err.message));
   };

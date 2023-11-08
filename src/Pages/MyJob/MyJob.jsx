@@ -10,7 +10,7 @@ const MyJob = () => {
     const {user} = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/allJobs?email=${user?.email}`)
+        axios.get(`http://localhost:5000/allJobs?email=${user?.email}`,{withCredentials:true})
         .then(res => {
             setAllCreatedJobs(res.data);
         })

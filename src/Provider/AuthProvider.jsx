@@ -9,6 +9,7 @@ import {
 import { createContext, useEffect, useState } from "react";
 import auth from "../../firebase.config";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -43,6 +44,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       setLoading(false);
       setUser(user);
+      
     });
     return () => {
       unSubscribe();
