@@ -28,7 +28,7 @@ const AddJob = () => {
     const applicationDeadline = startDate;
     const job = {jobPhoto, jobTitle, userName, category, jobDescription, salary, postingDate, jobApplicantsNumber, email, applicationDeadline}
 
-    axios.post('http://localhost:5000/allJobs', job)
+    axios.post('https://job-hub-server-six.vercel.app/allJobs', job)
     .then(res => {
         if(res.data.acknowledged){
             toast.success('Job Addeded Successfully')

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 const MhAllJobs = ({ jobs, handleDelete }) => {
-    console.log(jobs);
+    // console.log(jobs);
     const {
         _id,
       jobPhoto,

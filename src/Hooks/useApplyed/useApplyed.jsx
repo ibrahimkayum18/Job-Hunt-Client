@@ -7,7 +7,7 @@ const useApplyed = () => {
     const [applyed, setApplyed]  = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/applyed', {withCredentials:true})
+        axios.get('https://job-hub-server-six.vercel.app/applyed', {withCredentials:true})
         .then(res => {
             console.log(res.data);
             return (res.data);

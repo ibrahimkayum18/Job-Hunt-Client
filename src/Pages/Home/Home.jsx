@@ -14,7 +14,7 @@ const Home = () => {
   const { user } = useContext(AuthContext);
   const { data = [] } = UseAllJobs();
   // useEffect(() => {
-  //     axios.get(`http://localhost:5000/allJobs?email=${user?.email}`,{withCredentials:true})
+  //     axios.get(`https://job-hub-server-six.vercel.app/allJobs?email=${user?.email}`,{withCredentials:true})
   //     .then(res => {
   //         setData(res.send)
   //     })

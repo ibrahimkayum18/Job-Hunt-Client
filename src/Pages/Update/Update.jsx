@@ -63,7 +63,7 @@ const Update = () => {
     };
     console.log(job)
 
-    axios.put(`http://localhost:5000/allJobs/${_id}`, job)
+    axios.put(`https://job-hub-server-six.vercel.app/allJobs/${_id}`, job)
     .then((res) => {
         if(res.acknowledged){
             toast.success('Data Updated Successfully')

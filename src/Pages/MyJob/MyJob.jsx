@@ -40,7 +40,7 @@ const MyJob = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/allJobs/${id}`).then((res) => {
+          axios.delete(`https://job-hub-server-six.vercel.app/allJobs/${id}`).then((res) => {
             if (res.data.deletedCount > 0) {
               const remaining = allCreatedJobs.filter(
                 (item) => item._id !== id

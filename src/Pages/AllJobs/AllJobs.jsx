@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 const AllJobs = () => {
   const [input, setInput] = useState('');
   const { data = [] } = UseAllJobs();
-  console.log(data)
+  // console.log(data)
 
   return (
     <div>
@@ -16,7 +16,7 @@ const AllJobs = () => {
         <title>All Jobs | Job Hub</title>
       </Helmet>
       <AllJobsBanner></AllJobsBanner>
-      <div className="w-1/2 mx-auto">
+      <div className="w-1/2 mx-auto mt-8">
         <h2 className="text-2xl mb-4 text-center font-bold">Search Job By Name</h2>
         <div className="relative flex items-center  ">
             <input onChange={(e) => setInput(e.target.value)} value={input} type="search" name="search" className="input pl-10 input-bordered w-full" placeholder="Search Your Job..." id="" />

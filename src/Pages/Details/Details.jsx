@@ -54,7 +54,7 @@ const Details = () => {
       jobTitle,
     };
 
-    axios.post("http://localhost:5000/applyed", apply).then((res) => {
+    axios.post("https://job-hub-server-six.vercel.app/applyed", apply).then((res) => {
       console.log(res.data);
       toast.success(`You have applyed this job`);
       if (res.data.acknowledged) {

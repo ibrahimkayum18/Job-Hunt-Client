@@ -22,7 +22,7 @@ const UseAllJobs = () => {
             //     return allJobs;
             //  })
 
-            const fetchedJobs = await fetch('http://localhost:5000/allJobs',{
+            const fetchedJobs = await fetch('https://job-hub-server-six.vercel.app/allJobs',{
                 method:"GET",
                 
             });
