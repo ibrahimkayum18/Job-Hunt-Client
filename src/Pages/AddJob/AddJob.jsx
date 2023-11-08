@@ -68,7 +68,7 @@ const AddJob = () => {
       </div>
       <form onSubmit={handleAddJob}  className="w-11/12 md:w-11/12 mx-auto space-y-5 mt-10 lg:p-10 lg:border rounded-lg">
         <h2 className="text-center text-4xl font-bold">Add Job Now</h2>
-        <div className="md:flex justify-center items-center gap-5 space-y-5">
+        <div className="md:flex justify-center items-center gap-5 space-y-5 md:space-y-0">
           <div className="md:flex flex-col md:w-1/2 relative">
             <label className="py-3">Picture URL of the Job Banner</label>
             <div>
@@ -94,7 +94,7 @@ const AddJob = () => {
             />
           </div>
         </div>
-        <div className="md:flex justify-center items-center gap-5 space-y-5">
+        <div className="md:flex justify-center items-center gap-5 space-y-5 md:space-y-0">
           <div className="md:flex flex-col md:w-1/2 relative">
             <label className="py-3">User Name</label>
             <div>
@@ -122,7 +122,7 @@ const AddJob = () => {
             </select>
           </div>
         </div>
-        <div className="md:flex justify-center items-center gap-5 space-y-5">
+        <div className="md:flex justify-center items-center gap-5 space-y-5 md:space-y-0">
           <div className="md:flex flex-col md:w-1/2 relative">
             <label className="py-3">Job Description</label>
             <div>
@@ -149,7 +149,7 @@ const AddJob = () => {
             </select>
           </div>
         </div>
-        <div className="md:flex justify-center items-center gap-5 space-y-5">
+        <div className="md:flex justify-center items-center gap-5 space-y-5 md:space-y-0">
           <div className="md:flex flex-col md:w-1/2 relative">
             <label className="py-3">Posting Date</label>
             <div>

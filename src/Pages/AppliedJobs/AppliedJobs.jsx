@@ -46,10 +46,7 @@ const AppliedJobs = () => {
 
   useEffect(() => {
     axios
-      .get(`https://job-hub-server-six.vercel.app/applyed?email=${user?.email}`, {
-        // withCredentials: true
-        credentials: 'includes'
-      })
+      .get(`https://job-hub-server-six.vercel.app/applyed?email=${user?.email}`, {withCredentials: true})
       .then((res) => setApplyed(res.data));
   }, [user?.email]);
 
