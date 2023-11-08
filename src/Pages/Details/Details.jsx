@@ -97,7 +97,7 @@ const Details = () => {
       <div className="lg:w-1/2">
         <img className="w-full" src={jobPhoto} alt="" />
       </div>
-      <div className="lg:w-1/2 space-y-3">
+      <div className="lg:w-1/2 space-y-3 px-5 py-10">
         <h2 className="text-2xl font-bold ">{jobTitle}</h2>
         <button className="px-4 py-1 rounded-lg bg-sky-300">{category}</button>
         <h2 className="text-xl">

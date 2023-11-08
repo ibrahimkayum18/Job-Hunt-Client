@@ -1,6 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 // import useApplyed from "../../Hooks/useApplyed/useApplyed";
 // import MhAllJobs from "../MyJob/MhAllJobs";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import ApplyedCart from "./ApplyedCart";
 import axios from "axios";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -8,18 +10,37 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 
 const AppliedJobs = () => {
-  // const [filtederApplyed, setFilteredApplyed] = useState([]);
   const [applyed, setApplyed] = useState([]);
-
-  const filterData = (e) => {
-    e.preventDefault()
-    console.log(e.target.filter.value);
-    // if(items === 'all'){
-    //   setFilteredApplyed(applyed)
-    // }
-    // const findJob = applyed.filter(item =>  item.category == items );
-    // setFilteredApplyed(findJob);
+  const [filtederApplyed, setFilteredApplyed] = useState(applyed);
+  const [input, setInput] = useState('all');
+  const pdfRef = useRef();
+  const downloadPDF = () => {
+    const input = pdfRef.current;
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a5', true);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const imgX = (pdfHeight - imgWidth * ratio) / 2;
+      const imgY = 30;
+      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+      pdf.save('invoice.pdf');
+    })
   }
+
+
+  useEffect(() => {
+    if(input === 'all'){
+      setFilteredApplyed(applyed)
+    }
+    else if(applyed.length > 0){
+      const filtered = applyed.filter(item => item.category === input)
+      setFilteredApplyed(filtered)
+    }
+  },[applyed, input])
 
   const { user } = useContext(AuthContext);
 
@@ -106,11 +127,14 @@ const AppliedJobs = () => {
           </div>
         </div>
       </div>
-      <form onSubmit={filterData} className="text-center">
+      {/* <form  className="text-center"> */}
+      <div className="flex justify-between items-center lg:px-10">
       <div className="md:flex flex-col justify-end px-5 md:w-1/4 relative">
             <label className="py-3">Filter Job</label>
             <select
               name="filter"
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
               className="pl-2 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 capitalize text-lg w-full"
             >
               <option  value="all">All Jobs</option>
@@ -120,8 +144,13 @@ const AppliedJobs = () => {
               <option value="part-time">Part Time</option>
             </select>
           </div>
-      </form>
-      <table className="table">
+          <div>
+            <button onClick={downloadPDF} className="btn btn-primary">Download pdf</button>
+          </div>
+      </div>
+      {/* </form> */}
+      <div className="pt-5"><hr /></div>
+      <table className="table" ref={pdfRef}>
         {/* head */}
         <thead>
           <tr>
@@ -137,7 +166,7 @@ const AppliedJobs = () => {
           </tr>
         </thead>
         <tbody>
-          {applyed.map((jobs) => (
+          {filtederApplyed.map((jobs) => (
             <ApplyedCart
               key={jobs._id}
               handleDelete={handleDelete}
