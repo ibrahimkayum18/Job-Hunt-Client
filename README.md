@@ -1,8 +1,13 @@
-# React + Vite
+# Job Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+features-
+- 
 
-Currently, two official plugins are available:
+- On this web site, users can crate job
+- apply in any job except his job
+- user account build for users
+- you can search job here
+- You can filter job by category
+- you can update and delete your own job
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
