@@ -12,7 +12,7 @@ const MyJob = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allJobs?email=${user?.email}`, {
+      .get(`https://job-hub-server-six.vercel.app/allJobs?email=${user?.email}`, {
         withCredentials: true,
       })
       .then((res) => {
