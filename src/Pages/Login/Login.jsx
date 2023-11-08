@@ -36,7 +36,7 @@ const Login = () => {
         }
         
       })
-      .catch((err) => console.log(err));
+      .catch((error) => console.log(error));
   };
   const havdleGoogleLogIn = () => {
     googleLogin()
