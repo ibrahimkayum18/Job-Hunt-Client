@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -56,6 +57,9 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center bg-sky-200 py-10">
+      <Helmet>
+        <title>Log In | Job Hub</title>
+      </Helmet>
       <div className="w-full  flex justify-center items-center">
         <div className="p-5 md:p-10 rounded-lg w-7/12 mx-auto bg-base-100">
           <h2 className="text-3xl md:text-4xl font-bold text-center pb-8">

@@ -41,9 +41,9 @@ const ApplyedCart = ({jobs, handleDelete}) => {
         <td>{portfolio}</td>
         <td>{salary}k</td>
         <th>
-          <Link to={`/update/${_id}`}>
+          {/* <Link to={`/details/${_id}`}> */}
           <button  className="btn btn-ghost btn-xs">See More</button>
-          </Link>
+          {/* </Link> */}
         </th>
       </tr>
     );

@@ -3,51 +3,57 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import MhAllJobs from "./MhAllJobs";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 // import UseAllJobs from "../../Hooks/useAllJobs/UseAllJobs";
 
 const MyJob = () => {
-    const [allCreatedJobs, setAllCreatedJobs] = useState([])
-    const {user} = useContext(AuthContext);
+  const [allCreatedJobs, setAllCreatedJobs] = useState([]);
+  const { user } = useContext(AuthContext);
 
-    useEffect(() => {
-        axios.get(`http://localhost:5000/allJobs?email=${user?.email}`,{withCredentials:true})
-        .then(res => {
-            setAllCreatedJobs(res.data);
-        })
-    } ,[user?.email])
-
-    const handleDelete = id => {
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/allJobs?email=${user?.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setAllCreatedJobs(res.data);
       });
-      swalWithBootstrapButtons.fire({
+  }, [user?.email]);
+
+  const handleDelete = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons
+      .fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Yes, delete it!",
         cancelButtonText: "No, cancel!",
-        reverseButtons: true
-      }).then((result) => {
+        reverseButtons: true,
+      })
+      .then((result) => {
         if (result.isConfirmed) {
-
-          axios.delete(`http://localhost:5000/allJobs/${id}`)
-          .then(res => {
-            if(res.data.deletedCount > 0){
-              const remaining = allCreatedJobs.filter(item => item._id !== id);
-              console.log('deleted', remaining);
+          axios.delete(`http://localhost:5000/allJobs/${id}`).then((res) => {
+            if (res.data.deletedCount > 0) {
+              const remaining = allCreatedJobs.filter(
+                (item) => item._id !== id
+              );
+              console.log("deleted", remaining);
               setAllCreatedJobs(remaining);
             }
-          })
+          });
 
           swalWithBootstrapButtons.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
-            icon: "success"
+            icon: "success",
           });
         } else if (
           /* Read more about handling dismissals below */
@@ -56,23 +62,24 @@ const MyJob = () => {
           swalWithBootstrapButtons.fire({
             title: "Cancelled",
             text: "Your imaginary file is safe :)",
-            icon: "error"
+            icon: "error",
           });
         }
       });
-    }
+  };
 
-    return (
-        <div>
-            <div className="overflow-x-auto">
+  return (
+    <div>
+      <Helmet>
+        <title>My Jobs | Job Hub</title>
+      </Helmet>
+      <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
             <tr>
               <th>
-                <label>
-                  Delete
-                </label>
+                <label>Delete</label>
               </th>
               <th>Name</th>
               <th>Job</th>
@@ -84,17 +91,17 @@ const MyJob = () => {
           </thead>
           <tbody>
             {allCreatedJobs.map((jobs) => (
-              <MhAllJobs 
-              key={jobs._id} 
-              handleDelete={handleDelete}
-              jobs={jobs}
+              <MhAllJobs
+                key={jobs._id}
+                handleDelete={handleDelete}
+                jobs={jobs}
               ></MhAllJobs>
             ))}
           </tbody>
         </table>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default MyJob;

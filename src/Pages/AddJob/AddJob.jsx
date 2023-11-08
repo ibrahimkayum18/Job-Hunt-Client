@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const AddJob = () => {
     const {user} = useContext(AuthContext);
@@ -39,6 +40,9 @@ const AddJob = () => {
 
   return (
     <div className="mb-20">
+      <Helmet>
+        <title>Add Job | Job Hub</title>
+      </Helmet>
       <div
         style={{
           backgroundImage:

@@ -3,6 +3,7 @@ import UseAllJobs from "../../Hooks/useAllJobs/UseAllJobs";
 import AllJobsBanner from "./AllJobsBanner";
 import AllJobsCart from "./AllJobsCart";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const AllJobs = () => {
   const [input, setInput] = useState('');
@@ -11,6 +12,9 @@ const AllJobs = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>All Jobs | Job Hub</title>
+      </Helmet>
       <AllJobsBanner></AllJobsBanner>
       <div className="w-1/2 mx-auto">
         <h2 className="text-2xl mb-4 text-center font-bold">Search Job By Name</h2>

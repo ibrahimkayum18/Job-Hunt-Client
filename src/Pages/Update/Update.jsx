@@ -9,6 +9,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { FaBusinessTime, FaTextHeight, FaUser } from "react-icons/fa";
 import { MdDateRange, MdDescription, MdNumbers } from "react-icons/md";
+import { Helmet } from "react-helmet";
 
 const Update = () => {
   const [job, setJob] = useState([]);
@@ -72,6 +73,9 @@ const Update = () => {
 
   return (
     <div className="mb-20">
+      <Helmet>
+        <title>Update | Job Hub</title>
+      </Helmet>
       <div
         style={{
           backgroundImage:

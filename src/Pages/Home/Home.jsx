@@ -6,29 +6,30 @@ import axios from "axios";
 import { AuthContext } from "../../Provider/AuthProvider";
 import HomeAbout from "./HomeAbout";
 import HomeJobProcess from "./HomeJobProcess";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
-    const [input, setInput] = useState('');
-    // const [data, setData] = useState([])
-    const {user} = useContext(AuthContext)
-    const {data = []} = UseAllJobs();
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/allJobs?email=${user?.email}`,{withCredentials:true})
-    //     .then(res => {
-    //         setData(res.send)
-    //     })
-    // },[user?.email])
-    return (
-        <div className="">
-            <Banner 
-            setInput={setInput} 
-            input={input}
-            ></Banner>
-            <HomeTab data={data}></HomeTab>
-            <HomeAbout></HomeAbout>
-            <HomeJobProcess></HomeJobProcess>
-        </div>
-    );
+  const [input, setInput] = useState("");
+  // const [data, setData] = useState([])
+  const { user } = useContext(AuthContext);
+  const { data = [] } = UseAllJobs();
+  // useEffect(() => {
+  //     axios.get(`http://localhost:5000/allJobs?email=${user?.email}`,{withCredentials:true})
+  //     .then(res => {
+  //         setData(res.send)
+  //     })
+  // },[user?.email])
+  return (
+    <div className="">
+      <Helmet>
+        <title>Home | Job Hub</title>
+      </Helmet>
+      <Banner setInput={setInput} input={input}></Banner>
+      <HomeTab data={data}></HomeTab>
+      <HomeAbout></HomeAbout>
+      <HomeJobProcess></HomeJobProcess>
+    </div>
+  );
 };
 
 export default Home;

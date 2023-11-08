@@ -4,6 +4,7 @@ import { updateProfile } from "firebase/auth";
 import auth from "../../../firebase.config";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser, logOut } = useContext(AuthContext);
@@ -36,6 +37,9 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center bg-sky-200 py-10">
+      <Helmet>
+        <title>Register | Job Hub</title>
+      </Helmet>
       <div className="w-full  flex justify-center items-center">
         <div className="p-5 md:p-10 rounded-lg w-3/4 mx-auto bg-base-100">
           <h2 className="text-3xl md:text-4xl font-bold text-center pb-8">
