@@ -47,7 +47,8 @@ const AppliedJobs = () => {
   useEffect(() => {
     axios
       .get(`https://job-hub-server-six.vercel.app/applyed?email=${user?.email}`, {withCredentials: true})
-      .then((res) => setApplyed(res.data));
+      .then((res) => setApplyed(res.data))
+      .catch(err => console.log(err))
   }, [user?.email]);
 
   //delete operation

@@ -44,7 +44,7 @@ const Login = () => {
         toast.success('Logged In Successfully')
         if(user){
           const loggedUser = {email}
-          axios.post( 'http://localhost:5000/jwt',loggedUser, {withCredentials: true})
+          axios.post( 'https://job-hub-server-six.vercel.app/jwt',loggedUser, {withCredentials: true})
           .then(res => {
             if(res.data.success){
               navigate(location?.state ? location.state : '/')
