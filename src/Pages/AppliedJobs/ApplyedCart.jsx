@@ -5,7 +5,7 @@ const ApplyedCart = ({ jobs, handleDelete }) => {
   const { _id, portfolio, jobPhoto, name, category, email, salary, jobTitle } =
     jobs || {};
   return (
-    <tr>
+    <tr data-aos="fade-up">
       <th>
         <label>
           <AiFillDelete

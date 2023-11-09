@@ -69,7 +69,7 @@ const MyJob = () => {
   };
 
   return (
-    <div>
+    <div  data-aos="fade-up">
       <Helmet>
         <title>My Jobs | Job Hub</title>
       </Helmet>

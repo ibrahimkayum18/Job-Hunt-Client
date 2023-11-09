@@ -12,7 +12,7 @@ const AllJobsCart = ({ jobs }) => {
     jobTitle,
   } = jobs || {};
   return (
-    <tr>
+    <tr data-aos="fade-up">
       <th>
         <label>
           <input type="checkbox" className="checkbox" />

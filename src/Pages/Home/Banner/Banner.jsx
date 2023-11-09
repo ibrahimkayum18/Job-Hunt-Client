@@ -10,7 +10,7 @@ const Banner = ({ input, setInput }) => {
   console.log(input);
   return (
     <div
-      data-aos="fade-down"
+    data-aos="flip-right"
       style={{
         backgroundImage:
           "url(https://i.ibb.co/LN09PkL/pexels-fauxels-3184291.jpg)",

@@ -99,7 +99,7 @@ const AppliedJobs = () => {
       });
   };
   return (
-    <div>
+    <div data-aos="fade-up">
       <Helmet>
         <title>Applied Jobs | Job Hub</title>
       </Helmet>

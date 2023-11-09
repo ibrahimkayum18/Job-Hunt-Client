@@ -13,7 +13,7 @@ const HomeCart = ({ job }) => {
     jobApplicantsNumber,
   } = job || {};
   return (
-    <div className="lg:flex items-center gap-5 p-5 rounded bg-base-200">
+    <div  data-aos="flip-right" className="lg:flex items-center gap-5 p-5 rounded bg-base-200">
       <img className="w-full lg:w-56 h-48" src={jobPhoto} alt="" />
       <div className="mt-5">
         <div className="flex items-center justify-between gap-3">

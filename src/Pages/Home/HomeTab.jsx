@@ -21,7 +21,7 @@ const HomeTab = ({data}) => {
   }
     
   return (
-    <div>
+    <div data-aos="fade-up">
       <Tabs>
         <TabList>
           <Tab onClick={() => filterItem('')}>All Jobs</Tab>
@@ -42,7 +42,7 @@ const HomeTab = ({data}) => {
           <div className="text-center my-10">
                 {
                     data.length > 3 &&
-                    <button onClick={() => setShow(!show)} className="btn btn-primary">{!show ? "Show All" : "Show Less"}</button>
+                    <button onClick={() => setShow(!show)} className="btn bg-sky-200">{!show ? "Show All" : "Show Less"}</button>
                 }
             </div>
         </TabPanel>

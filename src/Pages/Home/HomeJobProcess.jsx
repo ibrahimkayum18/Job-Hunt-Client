@@ -2,7 +2,7 @@ import { FaDocker, FaFile, FaSearch, FaUsers } from 'react-icons/fa';
 
 const HomeJobProcess = () => {
     return (
-        <div className="my-5">
+        <div  data-aos="fade-up" className="my-5">
             <h2 className="text-4xl font-bold text-center">Our Job <span className="text-[#FF3611]">Process</span></h2>
             <div className="py-6"><hr /></div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 p-5 text-center">

@@ -72,7 +72,7 @@ const Update = () => {
   };
 
   return (
-    <div className="mb-20">
+    <div  data-aos="fade-up" className="mb-20">
       <Helmet>
         <title>Update | Job Hub</title>
       </Helmet>

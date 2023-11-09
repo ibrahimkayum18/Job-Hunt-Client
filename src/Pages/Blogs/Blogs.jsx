@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 
 const Blogs = () => {
   return (
-    <div>
+    <div data-aos="fade-up">
       <Helmet>
         <title>Blogs | Job Hub</title>
       </Helmet>

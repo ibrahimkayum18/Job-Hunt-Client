@@ -36,7 +36,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-sky-200 py-10">
+    <div  data-aos="fade-up" className="flex items-center justify-center bg-sky-200 py-10">
       <Helmet>
         <title>Register | Job Hub</title>
       </Helmet>

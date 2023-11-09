@@ -18,7 +18,7 @@ const MhAllJobs = ({ jobs, handleDelete }) => {
     
 
     return (
-      <tr>
+      <tr  data-aos="flip-right">
         <th>
           <label>
             <AiFillDelete onClick={() => handleDelete(_id)} className='text-3xl'></AiFillDelete>

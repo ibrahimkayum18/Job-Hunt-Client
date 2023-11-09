@@ -90,7 +90,7 @@ const Details = () => {
   // }
 
   return (
-    <div className="lg:flex justify-center items-center gap-6">
+    <div data-aos="fade-up" className="lg:flex justify-center items-center gap-6">
       <Helmet>
         <title>Job Details | Job Hub</title>
       </Helmet>

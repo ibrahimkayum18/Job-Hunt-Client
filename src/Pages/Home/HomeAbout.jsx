@@ -2,7 +2,7 @@
 
 const HomeAbout = () => {
     return (
-        <div>
+        <div  data-aos="fade-up">
             <h2 className="text-center text-4xl font-bold my-6">About Us</h2>
             <div className="py-5"><hr /></div>
             <div className="lg:flex items-center justify-center">
