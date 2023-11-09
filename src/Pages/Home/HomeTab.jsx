@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const HomeTab = ({data}) => {
   // const {data = []} = UseAllJobs();
+  const [show, setShow] = useState(false);
   const [filteredData, setFilteredData] = useState(data)
   
   
@@ -32,10 +33,18 @@ const HomeTab = ({data}) => {
 
         <TabPanel >
           <div className="grid lg:grid-cols-2 gap-5 p-5">
-          {
+          { show ?
             data.map(job => <HomeCart key={job._id} job={job}></HomeCart>)
+            :
+            data.slice(0,4).map(job => <HomeCart key={job._id} job={job}></HomeCart>)
           }
           </div>
+          <div className="text-center my-10">
+                {
+                    data.length > 3 &&
+                    <button onClick={() => setShow(!show)} className="btn btn-primary">{!show ? "Show All" : "Show Less"}</button>
+                }
+            </div>
         </TabPanel>
         <TabPanel>
           <div className="grid lg:grid-cols-2 gap-5 p-5">

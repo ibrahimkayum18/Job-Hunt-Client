@@ -72,7 +72,7 @@ const AppliedJobs = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/applyed/${id}`).then((res) => {
+          axios.delete(`https://job-hub-server-six.vercel.app/applyed/${id}`).then((res) => {
             console.log(res.data);
             if (res.data.acknowledged) {
               const remaining = applyed.filter((item) => item._id !== id);
@@ -149,7 +149,8 @@ const AppliedJobs = () => {
       </div>
       {/* </form> */}
       <div className="pt-5"><hr /></div>
-      <table className="table" ref={pdfRef}>
+      <div ref={pdfRef}>
+      <table className="table" >
         {/* head */}
         <thead>
           <tr>
@@ -161,7 +162,6 @@ const AppliedJobs = () => {
             <th>Email</th>
             <th>Portfolio Link</th>
             <th>Salary</th>
-            <th>See More</th>
           </tr>
         </thead>
         <tbody>
@@ -175,6 +175,7 @@ const AppliedJobs = () => {
           <tr>{applyed.length < 1 && <td>You have not applyed any job</td>}</tr>
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
